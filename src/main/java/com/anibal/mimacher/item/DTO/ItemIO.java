@@ -46,7 +46,7 @@ public class ItemIO {
 		ItemOutput itemOutput = new ItemOutput();
 		itemOutput.setId(item.getId());
 		itemOutput.setDescricao(item.getDescricao());
-		itemOutput.setTipo(item.toString());
+		itemOutput.setTipo(item.getTipo());
 		return itemOutput;
 	}
 	
