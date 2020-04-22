@@ -5,6 +5,7 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.transaction.Transactional;
 
+import org.apache.lucene.document.Document;
 import org.apache.lucene.search.Explanation;
 import org.apache.lucene.search.IndexSearcher;
 import org.hibernate.search.jpa.FullTextEntityManager;
@@ -47,20 +48,23 @@ public class LuceneIndexTest {
 	        //Generate a Lucene query using the builder
 	        org.apache.lucene.search.Query query = queryBuilder
 	                .keyword()
-	                .onField("descricao").matching("Casaco Nike branco preto")
+	                .onField("descricao").matching("casaco nike branco preto")
 	                .createQuery();
 	        
 
 	        org.hibernate.search.jpa.FullTextQuery fullTextQuery
 	                = fullTextEntityManager.createFullTextQuery(query, Item.class);
 
-	        fullTextQuery.setProjection( FullTextQuery.SCORE, FullTextQuery.THIS, "item.descricao");
+	        fullTextQuery.setProjection( FullTextQuery.SCORE, FullTextQuery.THIS, FullTextQuery.DOCUMENT_ID);
 	        //returns JPA managed entities
 	        
+	        log.info("Found 123123: "+ fullTextQuery.getResultStream());
 	        List persons = fullTextQuery.getResultList();
 	        Object[] firstResult = (Object[]) persons.get(0);
 	        Object[] firstResult1 = (Object[]) persons.get(1);
-	        log.info("Found itens: "+ firstResult[0] +" descricao: "+ firstResult[1]);
+	        log.info("Found 123123: ");
+
+	        log.info("Found itens: "+ firstResult[0] +" descricao: "+ firstResult[1] +" dteste: "+ fullTextQuery.explain((int) firstResult[2]) );
 	        log.info("Found itens: "+ firstResult1[0]+" descricao: "+ firstResult1[1]);
 	        
 

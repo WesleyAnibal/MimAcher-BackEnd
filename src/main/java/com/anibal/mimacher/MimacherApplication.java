@@ -23,7 +23,7 @@ public class MimacherApplication {
 			public void run(String... args) throws Exception {
 
 				Item person = new Item();
-				person.setDescricao("Casaco da Nike branco e preto") ;
+				person.setDescricao("casaco da nike branco e preto") ;
 				person.setTipo("tatat");
 				
 				
