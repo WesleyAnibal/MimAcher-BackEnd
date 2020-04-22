@@ -11,9 +11,12 @@ import javax.persistence.Inheritance;
 import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
 
+import org.hibernate.search.annotations.Field;
+import org.hibernate.search.annotations.Indexed;
 import org.springframework.ui.Model;
 
 @Entity
+@Indexed
 @Inheritance
 @Table(name = "tb_item")
 public class Item implements Serializable{
@@ -51,7 +54,8 @@ public class Item implements Serializable{
 	public void setId(Long id) {
 		this.id = id;
 	}
-
+	
+	@Field
 	public String getDescricao() {
 		return descricao;
 	}
@@ -66,6 +70,12 @@ public class Item implements Serializable{
 
 	public void setTipo(String tipo) {
 		this.tipo = tipo;
+	}
+	
+	@Override
+	public String toString() {
+		
+		return "Descricao: "+ this.getDescricao();
 	}
 	
 	
