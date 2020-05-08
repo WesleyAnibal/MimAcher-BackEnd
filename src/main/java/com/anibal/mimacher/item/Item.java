@@ -64,6 +64,8 @@ public class Item implements Serializable {
 	@NotEmpty
 	@Column(name = "tipo", nullable = false)
 	private String tipo;
+	
+	private Float score;
 
 	public Item() {
 	}
@@ -108,5 +110,15 @@ public class Item implements Serializable {
 
 		return "Descricao: " + this.getDescricao();
 	}
+
+	public Float getScore() {
+		return score;
+	}
+
+	public void setScore(Float score) {
+		this.score = score;
+	}
+	
+	
 
 }

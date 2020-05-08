@@ -17,6 +17,9 @@ public class ItemOutput implements Serializable {
 	    @ApiModelProperty(example = "teste")
 	    private String tipo;
 	    
+	    @ApiModelProperty(example = "teste")
+	    private Float score;
+	    
 	    public ItemOutput() {
 		
 		}
@@ -44,6 +47,16 @@ public class ItemOutput implements Serializable {
 		public void setTipo(String tipo) {
 			this.tipo = tipo;
 		}
+
+		public Float getScore() {
+			return score;
+		}
+
+		public void setScore(Float socore) {
+			this.score = socore;
+		}
+		
+		
 	    
 	    
 }
